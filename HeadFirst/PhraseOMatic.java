@@ -1,6 +1,6 @@
 public class PhraseOMatic
 {
-	
+
   public static void main(String[] args)
   {
 		//WordLists
@@ -71,7 +71,9 @@ public class PhraseOMatic
     for(i = 0; i < 3; i++)
       rand[i] = (int) (Math.random() * length[i]);
 		//Generate phrase
-    phrase = wordList1[rand[0]] + " " + wordList2[rand[1]] + " " + wordList3[rand[2]];
+    phrase = wordList1[rand[0]] + " " +
+			wordList2[rand[1]] + " " +
+			wordList3[rand[2]];
 
 		//Actions
 		//Print phrase
