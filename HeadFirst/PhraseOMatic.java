@@ -57,8 +57,8 @@ public class PhraseOMatic
     };
 
 		//Declarations
-    int[] length = new int[3];
-    int[] rand = new int[3];
+    int[] length = new int[3],
+					rand = new int[3];
     String phrase;
     int i;
 
