@@ -1,7 +1,9 @@
 class Shuffle1
 {
+
   public static void main(String[] args)
   {
+    
     //Declaration
     int x;
 
@@ -30,5 +32,5 @@ class Shuffle1
     }//end of while loop
 
   }//end of main funtion
-  
+
 }//end of class Shuffle1

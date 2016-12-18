@@ -1,5 +1,6 @@
 public class PhraseOMatic
 {
+	
   public static void main(String[] args)
   {
 		//WordLists
@@ -75,5 +76,7 @@ public class PhraseOMatic
 		//Actions
 		//Print phrase
     System.out.println("What we need is a " + phrase);
-  }
-}
+
+  }//end of main function
+
+}//end of class PhraseOMatic
