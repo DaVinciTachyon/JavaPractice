@@ -27,7 +27,8 @@ class BooksTest//Allows the application of the Books class into a simulated cont
     //Display of book collection
     while(x < 3)
     {
-      System.out.print(myBooks[x].title + " by " + myBooks[x].author);
+      System.out.println(myBooks[x].title + " by " +
+        myBooks[x].author);
       x++;
     }//end of while loop
 
