@@ -2,7 +2,7 @@ class HeapQuiz//The aim of the program is to learn about reference variable memo
 {
   int id = 0;
 
-  public static void main(Strings[] args)
+  public static void main(String[] args)
   {
     //Declarations and Initialisations
     int x,
