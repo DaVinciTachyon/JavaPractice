@@ -1,0 +1,15 @@
+CFOP Method
+
+Step 1 - White Cross
+  Do it in 8 moves or less
+  The white face is always down
+  Possible Tactic: Solve white cross with yellow centre to transfer to good white cross
+  
+
+Step 2 - F2L (First 2 Layers)
+
+
+Step 3 - OLL (Orient Last Layer)
+
+
+Step 4 - PLL (Permute Last Layer)

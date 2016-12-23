@@ -20,35 +20,31 @@ Step 2 - Good White Corners
 Take to the bottom if in wrong position
 
 Step 3 - Second Layer
-  Algorithms
-    Swap FUed and FRed
-      U R U' R' U' F' U F
-    Swap FUed and FLed
-      U' L' U L U F U' F'
-    Swap FRed and RFed
-      U R U' R' U' F' U F - U2 - U R U' R' U' F' U F
+  Swap FUed and FRed
+    U R U' R' U' F' U F
+  Swap FUed and FLed
+    U' L' U L U F U' F'
+  Swap FRed and RFed
+    U R U' R' U' F' U F - U2 - U R U' R' U' F' U F
 
 Step 4 - Yellow Cross on Top
-  Algorithms
-   Nothing to L to Horizontal Line to Cross (on Top)
+  Nothing to L to Horizontal Line to Cross (on Top)
     F R U R' U' F'
-   L to Cross (on Top)
+  L to Cross (on Top)
     F U R U' R' F'
 
 Step 5 - Swap edges for good yellow cross
-  Algorithm
-    Swap UFed and ULed
-      R U R' U R U2 R' U
+  Swap UFed and ULed
+    R U R' U R U2 R' U
 
 Step 6 - Position yellow corners
-  Algorithm
-    Swap UBRco and UBLco and UFLco (anti-clockwise)
-      U R U' L' U R' U' L
+  Swap UBRco and UBLco and UFLco (anti-clockwise)
+    U R U' L' U R' U' L
 
 Step 7 - Orient Last Layer Correctly
-  Algorithm
-    Rotate FRUco
-      R' D' R D 2x or 4x until oriented properly
-      U'
-      R' D' R D 2x or 4x until oriented properly
-      U
+  Rotate FRUco
+    R' D' R D 2x or 4x until oriented properly
+    U'
+    Back to start until all corners are oriented
+    U
+    Permute all layers properly
