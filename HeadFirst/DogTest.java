@@ -1,33 +1,33 @@
-class Dog//learn that method can act differently based of changing instance variables
+class Dog   //learn that method can act differently based of changing instance variables
 {
 
-  int size;
-  String name;
+  int     size;
+  String  name;
 
-  void bark()//no need for and inputted number of barks
+  void bark() //no need for and inputted number of barks
   {
-    if(size > 60)//Big dog barks
+    if(size > 60)       //Big dog barks
       System.out.println("Woof! Woof!");
-    else if(size > 14)//Middle size dog barks
+    else if(size > 14)  //Middle size dog barks
       System.out.println("Ruff! Ruff!");
-    else//Small dog barks
+    else                //Small dog barks
       System.out.println("Yip! Yip!");
-  }//end of bark method
+  }           //end of bark method
 
-  void bark(int numOfBarks)//for a variable number of barks
+  void bark(int numOfBarks) //for a variable number of barks
   {
     for(int i = 0; i < numOfBarks; i++)
     {
-      if(size > 60)//Big dog barks
+      if(size > 60)     //Big dog barks
         System.out.println("Woof! Woof!");
       else if(size > 14)//Middle size dog barks
         System.out.println("Ruff! Ruff!");
-      else//Small dog barks
+      else              //Small dog barks
         System.out.println("Yip! Yip!");
     }
-  }//end of bark method
+  }                         //end of bark method
 
-}//end of dog class
+}             //end of dog class
 
 class DogTest//TestRun of the Dog class
 {
