@@ -7,11 +7,23 @@ public class DotCom
   private int numOfHits = 0;//Counter is initialised to 0
   private int sizeDotCom;
   private int lengthBoard;
+  private String name;
+
+  //Set the name of the DotCom
+  public void setName(String s)
+  {
+    name = s;
+  }
 
   //Set the size of the DotCom
   public void setSizeDotCom(int s)
   {
-    sizeDotCom = s;
+    if(s > 0)
+      sizeDotCom = s;
+    else if(s == 0)
+      sizeDotCom = 1;
+    else
+      sizeDotCom = -1 * s;
   }
 
   //Set the size of the DotCom
@@ -24,12 +36,8 @@ public class DotCom
   //If the size of the DotCom is yet to be determined
   public void setLocationCells(int s)
   {
-    int randomNum,
-        i;
     sizeDotCom = s;
-    randomNum = (int) (Math.random() * (lengthBoard - sizeDotCom + 1));
-    for(i = 0; i < size; i++)
-      locationCells.add((String)(randomNum + i));
+    setLocationCells();
   }
   //If the size of the DotCom has already been decided
   public void setLocationCells()
@@ -38,7 +46,7 @@ public class DotCom
         i;
     randomNum = (int) (Math.random() * (lengthBoard - sizeDotCom + 1));
     for(i = 0; i < size; i++)
-      locationCells.add((String)(randomNum + i));
+      locationCells.add((String)/*Parse to string, better way*/(randomNum + i));
   }
 
   public String checkYourself(String stringGuess)
