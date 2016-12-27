@@ -1,8 +1,9 @@
-public class SimpleDotCom
+import java.util.ArrayList;
+public class DotCom
 //Creates and manages the DotCom
 {
   //Declare instance variables
-  private int[] locationCells;
+  private ArrayList<String> locationCells;
   private int numOfHits = 0;//Counter is initialised to 0
   private int sizeDotCom;
   private int lengthBoard;
@@ -26,42 +27,39 @@ public class SimpleDotCom
     int randomNum,
         i;
     sizeDotCom = s;
-    randomNum = (int) (Math.random() * (lengthBoard - size + 1));
+    randomNum = (int) (Math.random() * (lengthBoard - sizeDotCom + 1));
     for(i = 0; i < size; i++)
-      locationCells[i] = randomNum + i;
+      locationCells.add((String)(randomNum + i));
   }
   //If the size of the DotCom has already been decided
   public void setLocationCells()
   {
     int randomNum,
         i;
-    randomNum = (int) (Math.random() * (lengthBoard - size + 1));
+    randomNum = (int) (Math.random() * (lengthBoard - sizeDotCom + 1));
     for(i = 0; i < size; i++)
-      locationCells[i] = randomNum + i;
+      locationCells.add((String)(randomNum + i));
   }
 
   public String checkYourself(String stringGuess)
   {
     int guess,
-        cell;
+        cell,
+        index;
     String result;
 
-    guess = Integer.parseInt(stringGuess);
     result = "miss";
+    index = locationCells.indexOf(stringGuess);
 
-    for(cell : locationCells)
+    if(index >= 0)
     {
-      if(guess == cell)
-      {
+      locationCells.remove(index);
+      if(locationCells.isEmpty())
+        result = "kill";
+      else
         result = "hit";
-        numofHits++;
-        break;
-      }
     }
-    if(numOfHits == locationCells.length)
-    {
-      result = "kill";
-    }
+
     System.out.println(result);
     return result;
   }
