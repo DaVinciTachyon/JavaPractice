@@ -1,42 +1,44 @@
 import java.io.*;
 import java.util.*;
 public class GameHelper
-//Create a class that allows inputs to be taken
+//Takes pre-made and allows the use of not yet covered concepts to be merged into the SinkTheDotCom code
 {
-  private static final String alphabet = "abcdefg";
-  private int gridLength = 7;
-  private int gridSize = 49;
-  private int[] grid = new int[gridSize];
+  private static final String alphabet = "abcdefg"; //Creates the first ordinate of a location on the grid
+  private int gridLength = 7;                       //Creates the second ordinate
+  private int gridSize = 49;                        //The overall number of squares in the grid
+  private int[] grid = new int[gridSize];           //array of the grid
   private int comCount = 0;
 
-  public void setGridLength(int s)
-  {
-    gridLength = s;
-    setGridSize();
-  }
-  public void setAlphabet(String s)
+  public void setAlphabet(String s)//Allows change of the number of first ordinates
   {
     alphabet = s;
     setGridSize();
   }
-  private void setGridSize()
+  public void setGridLength(int s)//Allows change of the number of second ordinates
+  {
+    gridLength = s;
+    setGridSize();
+  }
+  private void setGridSize()//Changes the grid size based on number of ordinate changes
   {
     gridSize = alphabet.length * gridLength;
   }
 
-  public ArrayList<String> placeDotCom(int comSize)
+  public ArrayList<String> placeDotCom(int comSize/*The length of the Dot Com*/)//Places a DotCom on the grid so that it does not intefere with any other and is fully on the grid
   {
-    ArrayList<String> alphaCells;
-    String temp;
-    int[] coords;
-    int attempts,
-        location,
-        incr,
-        x,
-        row,
-        column;
-    boolean success;
+    //Declarations
+    ArrayList<String> alphaCells; //An array list containing the DotCom position
+    String temp;                  //Used for temporary storage of column values
+    int[] coords;                 //Used of temporary storage of locations
+    int attempts, 	              //Makes sure the program does not go on for too long, allowing it to quit after n tries
+        location,                 //Allows the finding of the initial block of the Dot Com
+        incr,                     //The increment of the next block of the Dot Com from the previous, allows the vertical and horizontal placement of a Dot Com
+        x,                        //Counter
+        row,                      //Second ordinate
+        column;                   //First ordinate
+    boolean success;              //Determines the usability of a square
 
+    //Initialisations
     alphaCells = new ArrayList<String>();
     temp = null;
     coords = new int[comSize];
@@ -48,38 +50,37 @@ public class GameHelper
     column = 0;
     comCount++;
 
-    if(comCount % 2 == 1)
-      incr = gridLength;
+    if(comCount % 2 == 1)//Choose whether the Dot Com is horizontal or vertical
+      incr = gridLength;//Change the increment to the correct amount for the orientation
 
-    while(!success & attempts++ < 200)
+    while(!success & attempts++ < 200)//WHile unsuccessful or there have been 200 attempts
     {
-      location = (int) (Math.random() * gridSize);
+      //Test initialisations
+      location = (int) (Math.random() * (gridSize - comSize + 1));//Choose an arbitrary location as the starting point of the Dot Com
       x = 0;
       success = true;
-      while(success && x < comSize)
+      while(success && x < comSize)//While within bounds and has access to free space, and the Dot Com is not completely placed
       {
-        if(grid[location] == 0)
+        if(grid[location] == 0)//If unoccupied
         {
-          coords[x++] = location;
-          location += incr;
-          if(location >= gridSize)
+          coords[x++] = location;   //set one of the squares of the Dot Com
+          location += incr;         //Increment to reach next position
+          if(location >= gridSize)  //If within the end of the grid
             success = false;
-          if(x > 0 && (location % gridLength == 0))
-            success = false;
-          else
+          if(x > 0 && (location % gridLength == 0)) //If not coming of the right hand side
             success = false;
         }
+        else
+          success = false;
       }
-      x = 0;
-      while(x < comSize)
+      for(x = 0; x < comSize; x++)//Set the working coordinates into an ArrayList to return
       {
         grid[coords[x]] = 1;
         row = (int) (coords[x] / gridLength);
         column = coords[x] % gridLength;
         temp = String.valueOf(alphabet.charAt(column));
-        alphaCells.add(temp.comcat(Integer.toString(row)));
-        x++;
-        //System.out.print("Coord " + x + " = " + alphaCells.get(x-1));
+        alphaCells.add(temp.concat(Integer.toString(row)));
+        //System.out.print("Coord " + (x - 1) + " = " + alphaCells.get(x));
       }
       return alphaCells;
     }

@@ -13,9 +13,9 @@ public class DotCom
   }
 
   //Get the locations of the DotCom
-  public void setLocationCells(int n)
+  public void setLocationCells(ArrayList<String> loc)
   {
-    locationCells = helper.placeDotCom(n);
+    locationCells = loc;
   }
 
   public String checkYourself(String stringGuess)
