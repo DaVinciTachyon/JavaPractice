@@ -21,7 +21,7 @@ public class GameHelper
   }
   private void setGridSize()
   {
-    gridSize = alphabet.length() * gridLength;
+    gridSize = alphabet.length * gridLength;
   }
 
   public ArrayList<String> placeDotCom(int comSize)
