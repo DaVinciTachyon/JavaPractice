@@ -9,51 +9,52 @@ public class GameHelper
   private int[] grid = new int[gridSize];
   private int comCount = 0;
 
-  public String getUserInput(String prompt)//gets user's input
+  public void setGridLength(int s)
   {
-    //Declarations
-    String inputLine;
-    BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
-
-    //Initialisation
-    inputLine = null;
-
-    //PRompt the user
-    System.out.print(prompt + ": ");
-    //Read the line
-    try
-    {
-      inputLine = is.readLine();
-      if(inputLine.length() == 0)
-        return null;
-    }
-    //Handle an exception
-    catch (IOException e)
-    {
-      System.out.println("IOException: " + e);
-    }
-    //Return the input
-    return inputLine.toLowerCase();
+    gridLength = s;
+    setGridSize();
+  }
+  public void setAlphabet(String s)
+  {
+    alphabet = s;
+    setGridSize();
+  }
+  private void setGridSize()
+  {
+    gridSize = alphabet.length() * gridLength;
   }
 
   public ArrayList<String> placeDotCom(int comSize)
   {
-    ArrayList<String> alphaCells = new ArrayList<String>();
-    String temp = null;
-    int[] coords = new int[comSize];
-    int attempts = 0;
-    boolean success = false;
-    int location = 0;
+    ArrayList<String> alphaCells;
+    String temp;
+    int[] coords;
+    int attempts,
+        location,
+        incr,
+        x,
+        row,
+        column;
+    boolean success;
 
+    alphaCells = new ArrayList<String>();
+    temp = null;
+    coords = new int[comSize];
+    attempts = 0;
+    success = false;
+    location = 0;
+    incr = 1;
+    row = 0;
+    column = 0;
     comCount++;
-    int incr = 1;
+
     if(comCount % 2 == 1)
       incr = gridLength;
 
     while(!success & attempts++ < 200)
     {
       location = (int) (Math.random() * gridSize);
-      int x = 0;
+      x = 0;
       success = true;
       while(success && x < comSize)
       {
@@ -69,9 +70,7 @@ public class GameHelper
             success = false;
         }
       }
-      int x = 0;
-      int row = 0;
-      int column = 0;
+      x = 0;
       while(x < comSize)
       {
         grid[coords[x]] = 1;
@@ -84,5 +83,32 @@ public class GameHelper
       }
       return alphaCells;
     }
+  }
+
+  public String getUserInput(String prompt)//gets user's input
+  {
+    //Declarations
+    String inputLine;
+    BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+
+    //Initialisation
+    inputLine = null;
+
+    //Prompt the user
+    System.out.print(prompt + ": ");
+    //Read the line
+    try
+    {
+      inputLine = is.readLine();
+      if(inputLine.length() == 0)
+        return null;
+    }
+    //Handle an exception
+    catch (IOException e)
+    {
+      System.out.println("IOException: " + e);
+    }
+    //Return the input
+    return inputLine.toLowerCase();
   }
 }

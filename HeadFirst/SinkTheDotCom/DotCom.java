@@ -4,18 +4,18 @@ public class DotCom
 {
   //Declare instance variables
   private ArrayList<String> locationCells;
-  private String name;
+  private String name = "Default.com";
 
   //Set the name of the DotCom
   public void setName(String domainName)
   {
-    name = domainName + ".com";
+    name = domainName.concat(".com");
   }
 
   //Get the locations of the DotCom
-  public void setLocationCells(ArrayList<String> loc)
+  public void setLocationCells(int n)
   {
-    locationCells = loc;
+    locationCells = helper.placeDotCom(n);
   }
 
   public String checkYourself(String stringGuess)
