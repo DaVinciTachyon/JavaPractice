@@ -23,7 +23,7 @@ public class GameHelper
     //Handle an exception
     catch (IOException e)
     {
-      System.out.println("IOExcpetion: " + e);
+      System.out.println("IOException: " + e);
     }
     //Return the input
     return inputLine;

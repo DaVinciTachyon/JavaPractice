@@ -1,38 +1,76 @@
-public class Game
+import java.util.*;
+public class DotComBust
 {
+
   public static void main(String[] args)
   {
-    //Declarations
-    boolean       isAlive;
-    SimpleDotCom  theDotCom;
-    GameHelper    helper;
-    int           numGuesses;
-    int[]         locations = new int[3];
-    String        userGuess,
-                  result,
-                  testResult;
+    DotComBust game = new DotComBust();
+    game.setUpGame();
+    game.startPlaying();
+  }
 
-    //Initialisations
-    numGuesses  = 0;
-    isAlive     = true;
-    helper      = new GameHelper();
-    theDotCom   = new SimpleDotCom();
+  private GameHelper helper = new GameHelper();
+  private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>();
+  private int numGuesses = 0;
 
-    //Setting up the location of the DotCom
-    theDotCom.setLengthBoard(7);
-    theDotCom.setLocationCells(3);
+  private void setUpGame()
+  {
+    int n = 3;
+    DotCom[] DotComs = new DotCom[n];
+    ArrayList<String> newLocation;
+    for(int i = 0; i < n; i++)
+      DotComs[i] = new DotCom();
 
-    while(isAlive)
+    DotComs[0].setName("Pets");
+    DotComs[1].setName("Go2");
+    DotComs[2].setName("eToys");
+    for(i = 0; i < n; i++)
+      dotComsList.add(DotComs[i]);
+
+    System.out.println("Your goal is to sink the three dot coms.\nPets.com, eToys.com, Go2.com\nTry to sink them in the fewest nember of guesses.");
+    for(DotCom dotComToSet : dotComsList)
     {
-      userGuess = helper.getUserInput("Enter a Number");
-      result = theDotCom.checkYourself(userGuess);
-      numGuesses++;
+      newLocation = helper.placeDotCom(3);
+      dotComToSet.setLocationCells(newLocation);
+    }
+  }
 
-      if(result.equals("kill"))
+  private void startPlaying()
+  {
+    String userGuess;
+    while(!dotComsList.isEmpty())
+    {
+      userGuess = helper.getUserInput("Enter a Guess");
+      checkUserGuess(userGuess);
+    }
+    finishGame();
+  }
+
+  private void checkUserGuess(String userGuess)
+  {
+    String result;
+    numGuesses++;
+    result = "miss";
+    for(DotCom dotComToTest : dotComsList)
+    {
+      result = dotComToTest.checkYourself(UserGuess);
+      if (result.equals("hit"))
+        break;
+      if (result.equals("kill"))
       {
-        isAlive = false;
-        System.out.println("You took " + numGuesses + " guesses");
+        dotComsList.remove(dotComToTest);
+        break;
       }
     }
+    System.out.println(result);
+  }
+
+  private void finishGame()
+  {
+    System.out.println("All of the dot coms are dead! Your stock is nuw worthless");
+    if(numOfGuesses <= 18)
+      System.out.println("It only took you " + numOfGuesses + " guesses.\n\tYou got out before you sank.");
+    else
+      System.out.println("Took you long enough. " + numOfGuesses + " guesses.\n\tFish are dancing with your options.");
   }
 }
