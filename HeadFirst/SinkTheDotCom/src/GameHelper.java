@@ -3,7 +3,7 @@ import java.util.*;
 public class GameHelper
 //Takes pre-made and allows the use of not yet covered concepts to be merged into the SinkTheDotCom code
 {
-  private static final String alphabet = "abcdefg"; //Creates the first ordinate of a location on the grid
+  private String alphabet = "abcdefg"; //Creates the first ordinate of a location on the grid
   private int gridLength = 7;                       //Creates the second ordinate
   private int gridSize = 49;                        //The overall number of squares in the grid
   private int[] grid = new int[gridSize];           //array of the grid
@@ -21,7 +21,7 @@ public class GameHelper
   }
   private void setGridSize()//Changes the grid size based on number of ordinate changes
   {
-    gridSize = alphabet.length * gridLength;
+    gridSize = alphabet.length() * gridLength;
   }
 
   public ArrayList<String> placeDotCom(int comSize/*The length of the Dot Com*/)//Places a DotCom on the grid so that it does not intefere with any other and is fully on the grid
@@ -80,10 +80,10 @@ public class GameHelper
         column = coords[x] % gridLength;
         temp = String.valueOf(alphabet.charAt(column));
         alphaCells.add(temp.concat(Integer.toString(row)));
-        //System.out.print("Coord " + (x - 1) + " = " + alphaCells.get(x));
+        //System.out.print("Coord " + (x - 1) + " = " + alphaCells.get(x) + "\n");
       }
-      return alphaCells;
     }
+    return alphaCells;
   }
 
   public String getUserInput(String prompt)//gets user's input

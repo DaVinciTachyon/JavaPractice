@@ -15,9 +15,10 @@ public class DotComBust//Main class for the game
 
   private void setUpGame()//Set up the game
   {
+    int i;
     //Create the DotComs
-    DotCom[] DotComs = new DotCom[n];
-    for(int i = 0; i < 3; i++)
+    DotCom[] DotComs = new DotCom[3];
+    for(i = 0; i < 3; i++)
       DotComs[i] = new DotCom();
 
     //Name all of the Dot Coms
@@ -70,9 +71,9 @@ public class DotComBust//Main class for the game
   private void finishGame()//end the game
   {
     System.out.println("All of the dot coms are dead! Your stock is now worthless"); //The game is finished
-    if(numOfGuesses < 18) //Positive message for less than 18 guesses
-      System.out.println("It only took you " + numOfGuesses + " guesses.\n\tYou got out before you sank.");
+    if(numGuesses < 18) //Positive message for less than 18 guesses
+      System.out.println("It only took you " + numGuesses + " guesses.\n\tYou got out before you sank.");
     else                  //Negative message for 18 guesses or more
-      System.out.println("Took you long enough. " + numOfGuesses + " guesses.\n\tFish are dancing with your options.");
+      System.out.println("Took you long enough. " + numGuesses + " guesses.\n\tFish are dancing with your options.");
   }
 }
