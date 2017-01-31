@@ -2,7 +2,7 @@ import java.util.*;
 public class DotComBust//Main class for the game
 {
 
-  public static void main(String[] args)//MAin function allowing to set up and start the game
+  public static void main(String[] args)//Main function allowing to set up and start the game
   {
     DotComBust game = new DotComBust();
     game.setUpGame();
