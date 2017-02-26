@@ -22,9 +22,6 @@ class QuizMaster extends QuizBoard
       player.add(new QuizPlayer());
       score.add(new ScoreMaster());
       timer.add(new TimeMaster());
-    }
-    for (playerN = 0; playerN < numberOfPlayers; playerN++)
-    {
       readyPlayer(playerN + 1, questionMaster.getNumberOfQuestions());
       timer.get(playerN).setInitialTime();
       for(questionN = 1; questionN <= questionMaster.getNumberOfQuestions(); questionN++)
