@@ -37,10 +37,10 @@ class QuestionMaster
     System.out.print("Question " + questionN + ":\n\t");
     System.out.print(question.getQuestion());
 
-    checkResponse(player, player.answerQuestion(), question.getAnswer(), score);
+    checkResponse(player.answerQuestion(), question.getAnswer(), score);
   }
 
-  void checkResponse(QuizPlayer player, String response, String answer, ScoreMaster score)
+  void checkResponse(String response, String answer, ScoreMaster score)
   {
     if(Integer.parseInt(response) == Integer.parseInt(answer))
     {
