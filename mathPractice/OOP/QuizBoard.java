@@ -1,54 +1,19 @@
+import java.util.*;
+
 abstract class QuizBoard
 {
-  int numberOfQuestions = 0;
+  String gameInstructions;
 
-  void game()
+  public QuizBoard()
   {
-    QuizPlayer player = new QuizPlayer();
-    int questionN;
-
-    describeGame();
-    setNumberOfQuestions();
-    player.setInitialTime();
-    for (questionN = 1; questionN <= numberOfQuestions; questionN++)
-      questionRound(player, questionN);
-    player.setFinalTime();
-    giveScore(player, player.getTime());
-    endGame();
+    gameInstructions = "This is the maths game.";
   }
 
-  void describeGame()
-  {
-    System.out.println("This is the maths game.");
-  }
+  abstract void startQuiz();
 
-  void giveScore(QuizPlayer player, int time)
-  {
-    if (time == 1)
-    {
-      if (numberOfQuestions == 1)
-        System.out.println("You scored " + player.getScore() + " out of " + numberOfQuestions + " question in 1 second.");
-      else
-        System.out.println("You scored " + player.getScore() + " out of " + numberOfQuestions + " questions in 1 second.");
-    }
-    else
-    {
-      if (numberOfQuestions == 1)
-        System.out.println("You scored " + player.getScore() + " out of " + numberOfQuestions + " question in " +  time + " seconds.");
-      else
-        System.out.println("You scored " + player.getScore() + " out of " + numberOfQuestions + " questions in " +  time + " seconds.");
-    }
-  }
+  abstract void describeQuiz();
 
-  abstract void questionRound(QuizPlayer player, int questionN);
+  abstract void giveScore(int score, int numberOfQuestions, int time);
 
-  void endGame()
-  {
-    System.out.println("The End.");
-  }
-
-  void setNumberOfQuestions()
-  {
-    numberOfQuestions = (int)(Math.random() * 100) % 15 + 1;
-  }
+  abstract void endQuiz(ArrayList<Integer> winner);
 }
